@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Filtrer les livres par catégorie{% endblock %}
+
+{% block body %}
+    <h1>Filtrer les livres</h1>
+
+    <!-- Formulaire de filtrage -->
+    {{ form_start(form) }}
+        {{ form_row(form.category) }}
+        <button type="submit">Filtrer</button>
+    {{ form_end(form) }}
+
+    <!-- Résultats du filtrage -->
+    <h2>Résultats</h2>
+    {% if books is not empty %}
+        <ul>
+            {% for book in books %}
+                <li>
+                    <strong>{{ book.title }}</strong> par {{ book.author }} (Catégorie : {{ book.category.name }})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun livre trouvé pour cette catégorie.</p>
+    {% endif %}
+{% endblock %}

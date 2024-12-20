@@ -1,0 +1,3 @@
+{% if book.imageName %}
+    <img src="{{ asset('uploads/images/books/' ~ book.imageName) }}" alt="Couverture de {{ book.title }}">
+{% endif %}
